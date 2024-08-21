@@ -1,0 +1,36 @@
+package advantal;
+public class MultithreadDemo {
+    private static volatile int counter = 0;
+
+    public static void main(String[] args) {
+        Runnable task = () -> {
+            for (int i = 0; i < 1000; i++) {
+                incrementCounter();
+                try {
+                    Thread.sleep(50); // Simulate work
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        Thread thread1 = new Thread(task, "Thread-1");
+        Thread thread2 = new Thread(task, "Thread-2");
+
+        thread1.start();
+        thread2.start();
+
+        try {
+            thread1.join();
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println("Final Counter Value: " + counter);
+    }
+  // use synchronization to ensure that only one thread can execute the increment operation at a time
+    private synchronized static void incrementCounter() {
+        counter++;
+    }
+}
