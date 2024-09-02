@@ -1,0 +1,80 @@
+Hard 2 and Day3 - M1, M2
+
+class-->DemoApplication.java
+
+package com.example.DemoApplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class DemoApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(DemoApplication.class, args);
+		ApplicationContext context= SpringApplication.run(DemoApplication.class, args);
+    Dev dev=context.getBean(Dev.class);
+	dev.build();
+	}
+
+}
+
+class2-->Dev.java
+
+package com.example.DemoApplication;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Dev {
+    @Autowired
+   @Qualifier("desktop")
+   private Computer comp;
+   public void build()
+   {
+       comp.compile();
+       System.out.println("builded");
+   }
+
+}
+
+class3-->Laptop.java
+
+package com.example.DemoApplication;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Laptop implements Computer {
+    public void compile()
+    {
+        System.out.println("compile in Laptop");
+    }
+}
+
+class4-->Desktop.java
+
+package com.example.DemoApplication;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Desktop implements Computer{
+    public void compile()
+    {
+        System.out.println("compile in Desktop");
+    }
+}
+
+class5-->Computer.java
+package com.example.DemoApplication;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public interface Computer {
+    public void compile();
+}

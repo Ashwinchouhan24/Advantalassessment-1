@@ -1,0 +1,65 @@
+    
+class1-->DemoDependencyApplication.java
+
+package com.Aashu.DemoDependency;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class DemoDependencyApplication {
+
+	public static void main(String[] args) {
+		ApplicationContext context= SpringApplication.run(DemoDependencyApplication.class, args);
+
+		Dev d =context.getBean(Dev.class);
+		d.build();
+
+	}
+
+
+}
+
+class2-->Dev.java
+
+package com.Aashu.DemoDependency;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Dev {
+    @Autowired //field injenction
+
+    private Laptop laptop;
+
+//    public Dev(Laptop laptop){
+//        this.laptop=laptop;
+//    }                                  Costrutor injection
+//@Autowired
+//    public void setLaptop(Laptop laptop)
+//    {
+//        this.laptop=laptop;
+//    }
+    public void build()
+    {
+        laptop.compile();
+        System.out.println("Learning Springboot");
+    }
+}
+
+class3-->Laptop.java
+
+package com.Aashu.DemoDependency;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Laptop {
+    public void compile()
+    {
+        System.out.println("Program runs with 404 bugs");
+    }
+}
+

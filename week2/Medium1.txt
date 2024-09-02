@@ -1,0 +1,76 @@
+also include Day3 - M1, M2
+
+Medium Question 1: Demonstrate @Configuration and @Bean annotations (Complexity: Medium).
+
+class1-->SpringAnnoApplication.java
+
+package com.example.SpringAnno;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+public class SpringAnnoApplication
+{
+	public static void main( String[] args )
+	{
+		ApplicationContext context = new AnnotationConfigApplicationContext(config.class);
+		Samsung s = context.getBean(Samsung.class);
+		App a = context.getBean(App.class);
+		s.model();
+		a.apps();
+
+	}
+}
+
+class2-->Samsung.java
+
+package com.example.SpringAnno;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class Samsung {
+
+    public void model(){
+        System.out.println("SAMSUNG GALAXY S23");
+    }
+}
+class3-->App.java
+
+package com.example.SpringAnno;
+
+public class App {
+
+   public void apps()
+   {
+       System.out.print("welcome to play store");
+   }
+
+
+}
+
+class3-->Config.java
+
+package com.example.SpringAnno;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+@ComponentScan("com.exaple.SpringAnno")
+//@ComponentScan({"org.example", "org.example.SpringAnno;"})
+public class config {
+
+    @Bean
+    public Samsung samsung(){
+        return new Samsung();
+    }
+
+    @Bean
+    public App apps(){
+        return new App();
+    }
+}
+

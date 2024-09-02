@@ -1,0 +1,59 @@
+Week2
+
+Day1_Easy 1-
+
+The Spring Framework is a comprehensive framework for building enterprise-level applications in Java. It provides a wide range of functionalities and features that address various aspects of application development.
+- Inversion of Control (IoC) / Dependency Injection (DI): Simplifies the management of application components and their dependencies by allowing the framework to handle the instantiation and wiring of objects.
+- Aspect-Oriented Programming (AOP): Separates cross-cutting concerns (like logging, security, or transactions) from the business logic.
+- Model-View-Controller (MVC) Framework: Supports the development of web applications following the MVC pattern.
+
+Day2_Easy 1-
+
+Spring Boot is a project within the larger Spring ecosystem designed to simplify the development and deployment of Spring applications. It builds on top of the Spring Framework by providing a set of conventions, defaults, and tools that make it easier and faster to create production-ready applications.
+- Auto-Configuration: Automatically configures your Spring application based on the dependencies present in the classpath.
+- Spring Boot Starters: Simplifies dependency management by providing a set of starter POMs (Project Object Models) that include commonly used dependencies.
+- Spring Boot Initializr: Provides a web-based tool to bootstrap new Spring Boot projects quickly.
+- Embedded Servers: Allows Spring Boot applications to run on embedded servers.
+
+Day3_Easy 1 -
+
+Spring Boot
+- Configuration: Uses convention over configuration. Spring Boot auto-configures beans and settings based on the classpath and environment.
+- Setup: Includes embedded servers (like Tomcat, Jetty, or Undertow) which simplifies deployment and eliminates the need for an external server.
+
+Spring Framework
+- Configuration: Requires a significant amount of manual configuration. This includes setting up application contexts, configuring beans, and specifying dependencies.
+- Setup: Includes embedded servers (like Tomcat, Jetty, or Undertow) which simplifies deployment and eliminates the need for an external server.
+
+
+Spring Boot is a higher-level abstraction that builds on the Spring Framework to provide a more streamlined and easier-to-use approach for developing Spring applications. It simplifies configuration, setup, and deployment, which can significantly reduce development time and effort.
+
+Day5_Easy 2 -
+
+- Performance Overhead: The auto-configuration mechanism can add some performance overhead. It scans the classpath and applies various configurations based on the dependencies present, which can impact startup time and memory usage.
+
+- Unnecessary Dependencies: Auto-configuration may include components that are not needed for your specific application. This can lead to a bloated classpath, increasing the size of your application and potentially impacting performance and security.
+
+- Less Control: Relying heavily on auto-configuration might limit your control over certain configurations. You might find it challenging to customize or override default settings without delving into Spring Boot’s internal mechanisms.
+
+Day5_Medium 1 -
+
+Auto-Configuration
+
+- Rapid Development: Auto-configuration provides sensible defaults and automatically sets up common components and services, which accelerates the development process. Developers can focus more on building features rather than configuring the infrastructure.
+
+- Reduced Boilerplate: It minimizes the amount of boilerplate code and configuration needed, making the application codebase cleaner and more maintainable.
+
+- Consistency and Best Practices: Spring Boot’s auto-configuration follows best practices and consistent conventions, which can lead to more reliable and standardized setups across different applications.
+
+Manual Configuration
+
+- Fine-Grained Control: Manual configuration provides complete control over how components are set up and wired together. This allows for precise tuning and customization according to specific requirements.
+
+- Optimized Performance: By manually configuring components, you can optimize performance and resource usage more effectively, avoiding unnecessary configurations and dependencies.
+
+- Transparency: Manual configuration provides a clear and explicit understanding of the application’s setup and dependencies, making it easier to troubleshoot and debug issues.
+
+Day5_Hard1 -
+
+Spring Boot provides strong support for microservices architecture through its simplified configuration, embedded servers, integration with Spring Cloud, externalized configuration, monitoring tools, and resilience features. However, it also comes with considerations such as configuration complexity, potential performance overhead, a learning curve, and dependency management challenges. Balancing these factors and leveraging Spring Boot’s strengths while addressing its limitations can lead to a successful microservices implementation.

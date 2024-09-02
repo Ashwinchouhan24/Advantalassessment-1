@@ -1,0 +1,29 @@
+class1-->CustomBannerApplication.java
+
+package com.example.CustomBanner;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class CustomBannerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(CustomBannerApplication.class, args);
+		System.out.println("hlw");
+	}
+
+}
+
+class2-->application.properties
+
+spring.application.name=CustomBanner
+spring.banner.location=classpath:banner.txt
+
+class3--> Banner.txt
+
+ ,---.     ,--.                           ,--.         ,--.
+ /  O  \  ,-|  |,--.  ,--.,--,--.,--,--, ,-'  '-.,--,--.|  |
+|  .-.  |' .-. | \  `'  /' ,-.  ||      \'-.  .-' ,-.  ||  |
+|  | |  |\ `-' |  \    / \ '-'  ||  ||  |  |  | \ '-'  ||  |
+`--' `--' `---'    `--'   `--`--'`--''--'  `--'  `--`--'`--'

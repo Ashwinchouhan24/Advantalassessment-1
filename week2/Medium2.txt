@@ -1,0 +1,161 @@
+Quetions Coverd in this: Day1- E2, M2 Day2- M1, M2, M3, H1 Day4- E2, M1
+
+class1-->WebAppApplication.java
+
+package com.First.webApp;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class WebAppApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(WebAppApplication.class, args);
+	}
+
+}
+
+class2-->HomeController.java
+
+package com.First.webApp.Controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class HomeController {
+    @RequestMapping("/")
+    public String greet()
+    {
+        return "welcome to java world";
+    }
+    @RequestMapping("/about")
+    public String about(){
+        return "about page ";
+    }
+}
+
+class3-->ProductController.java
+
+package com.First.webApp.Controller;
+import com.First.webApp.employee;
+import com.First.webApp.Services.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+@RestController
+public class ProductController
+{
+    @Autowired
+    ProductService service;
+    @GetMapping("/products")
+    public List<employee> getProduct()
+    {
+        return service.getProducts();
+    }
+    @GetMapping("/products/{prodId}")
+    public employee getProductByid(@PathVariable int prodId)
+    {
+        return service.getProductByid(prodId);
+    }
+    @PostMapping("/products")
+    public void addProduct(@RequestBody employee prod)
+    {
+       service.addProduct(prod);
+    }
+}
+
+class4-->ProductService.java
+
+package com.First.webApp.Services;
+
+import com.First.webApp.employee;
+import com.First.webApp.Repository.ProductRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class ProductService {
+    @Autowired
+    ProductRepo repo;
+//    List<employee> products= new ArrayList<>( Arrays.asList( new employee(101,"IPhone" ,50000),
+//            new employee(102,"television" ,25000),
+//             new employee(103,"DSLR" ,125000)));
+    public List<employee> getProducts()
+    {
+        return repo.findAll();
+    }
+
+    public employee getProductByid(int prodId) {
+
+        return repo.findById(prodId).orElse(new employee());
+    }
+
+
+    public void addProduct(employee prod) {
+         repo.save(prod);
+    }
+}
+
+class5-->employee.java
+
+package com.First.webApp;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import org.springframework.stereotype.Component;
+
+
+@Component
+@Entity
+public class employee {
+    @Id
+    private int empid;
+    private String empname;
+    private String branch;
+
+    public employee() {
+
+    }
+
+    public void setEmpid(int empid) {
+        this.empid = empid;
+    }
+
+    public void setEmpname(String empname) {
+        this.empname = empname;
+    }
+
+    public void setBranch(String branch) {
+        this.branch = branch;
+    }
+
+    public String getEmpname() {
+        return empname;
+    }
+
+    public int getEmpId() {
+        return empid;
+    }
+
+    public String getBranch() {
+        return branch;
+    }
+}
+class6-->ProductRepo.java
+
+package com.First.webApp.Repository;
+
+import com.First.webApp.employee;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductRepo extends JpaRepository<employee, Integer> {
+}
+
+
